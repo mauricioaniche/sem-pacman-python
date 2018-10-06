@@ -18,20 +18,25 @@ def within_borders(map, x, y):
     return y_is_valid and x_is_valid
 
 
+def _is_character(map, character, x, y):
+    return map[x][y] == character
+
+
 def is_wall(map, x, y):
-    return map[x][y] == '|' or map[x][y] == '-'
+    return _is_character(map, '|', x, y) \
+           or _is_character(map, '-', x, y)
 
 
 def is_ghost(map, x, y):
-    return map[x][y] == 'G'
+    return _is_character(map, 'G', x, y)
 
 
 def is_pill(map, x, y):
-    return map[x][y] == 'P'
+    return _is_character(map, 'P', x, y)
 
 
 def is_pacman(map, x, y):
-    return map[x][y] == '@'
+    return _is_character(map, '@', x, y)
 
 
 def total_pills(map):
