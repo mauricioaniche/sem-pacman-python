@@ -27,6 +27,10 @@ _You must have Python 3 installed (and not Python 2!)_
 - Install all the dependencies
     - `pip install -r requirements.txt`
 
+To run the tests (+ coverage): `py.test --cov-report html --cov=refactored *tests.py`
+
+To run pylint, `pylint *.py`.
+
 ## License
 
 Creative Commons.
