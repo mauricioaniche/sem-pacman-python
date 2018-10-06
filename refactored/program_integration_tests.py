@@ -58,9 +58,3 @@ def test_ghost_wins():
 
     assert game_finished is True
     assert win is False
-
-# def test_play_win():
-#     game_finished, win = play(simple_map_2, 'd')
-#
-#     assert game_finished is True
-#     assert win is True
