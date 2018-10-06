@@ -1,6 +1,6 @@
 import pytest
 from refactored.pacman import within_borders, is_wall, total_pills, find_pacman, next_position, move_pacman, is_pacman, \
-    is_pill, is_ghost, play
+    is_pill, is_ghost, play, get_all_ghosts
 
 
 def get_map():
@@ -183,3 +183,18 @@ def test_play_wall():
     play(map, 'a')
 
     assert find_pacman(map) == (x, y)
+
+
+def test_get_all_ghosts():
+    map = get_map()
+
+    ghosts = get_all_ghosts(map)
+
+    assert ghosts[0] == [1, 1]
+    assert ghosts[1] == [1, 7]
+    assert ghosts[2] == [3, 1]
+
+    map = ["....."]
+
+    ghosts = get_all_ghosts(map)
+    assert ghosts == []

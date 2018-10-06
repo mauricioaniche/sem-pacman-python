@@ -1,4 +1,3 @@
-
 def find_pacman(map):
     pacman_x = -1
     pacman_y = -1
@@ -51,14 +50,17 @@ def move_pacman(map, pacman_x, pacman_y, next_pacman_x, next_pacman_y):
     map[next_pacman_x] = map[next_pacman_x][0:next_pacman_y] + "@" + map[next_pacman_x][next_pacman_y + 1:]
 
 
-def move_ghosts(map, generate_int):
+def get_all_ghosts(map):
     all_ghosts = []
     for x in range(len(map)):
         for y in range(len(map[x])):
             if map[x][y] == 'G':
                 all_ghosts.append([x, y])
+    return all_ghosts
 
-    for ghost in all_ghosts:
+
+def move_ghosts(map, generate_int):
+    for ghost in get_all_ghosts(map):
         old_ghost_x = ghost[0]
         old_ghost_y = ghost[1]
 
@@ -91,7 +93,6 @@ def move_ghosts(map, generate_int):
     return False, False
 
 
-
 def next_position(key, x, y):
     if key == 'a':  # left
         return x, y - 1
@@ -103,6 +104,7 @@ def next_position(key, x, y):
         return x, y + 1
     else:
         return -1, -1
+
 
 def play(map, key):
     pacman_x, pacman_y = find_pacman(map)
@@ -131,4 +133,3 @@ def play(map, key):
 
     ate_all_pills = total_pills(map) == 0
     return ate_all_pills, ate_all_pills
-
