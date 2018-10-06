@@ -107,7 +107,7 @@ while not game_finished:
         next_ghost_y = possible_directions[random_movement][1]
 
         y_is_valid = next_ghost_y >= 0 and next_ghost_y <= len(map[0])
-        x_is_valid = next_ghost_x >= 0 and next_ghost_x <= len(map)
+        x_is_valid = next_ghost_x >= 0 and next_ghost_x < len(map)
 
         if not (y_is_valid and x_is_valid):
             continue
