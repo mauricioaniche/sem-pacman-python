@@ -1,5 +1,3 @@
-import random
-
 
 def find_pacman(map):
     pacman_x = -1
@@ -16,7 +14,7 @@ def find_pacman(map):
 
 def within_borders(map, x, y):
     y_is_valid = 0 <= y <= len(map[0])
-    x_is_valid = 0 <= x <= len(map)
+    x_is_valid = 0 <= x < len(map)
 
     return y_is_valid and x_is_valid
 
@@ -53,7 +51,7 @@ def move_pacman(map, pacman_x, pacman_y, next_pacman_x, next_pacman_y):
     map[next_pacman_x] = map[next_pacman_x][0:next_pacman_y] + "@" + map[next_pacman_x][next_pacman_y + 1:]
 
 
-def move_ghosts(map):
+def move_ghosts(map, generate_int):
     all_ghosts = []
     for x in range(len(map)):
         for y in range(len(map[x])):
@@ -71,7 +69,7 @@ def move_ghosts(map):
             [old_ghost_x - 1, old_ghost_y]  # x-1, y
         ]
 
-        random_movement = random.randint(0, 3)
+        random_movement = generate_int(0, 3)
         next_ghost_x = possible_directions[random_movement][0]
         next_ghost_y = possible_directions[random_movement][1]
 
@@ -130,5 +128,7 @@ def play(map, key):
 
     # move to that position
     move_pacman(map, pacman_x, pacman_y, next_pacman_x, next_pacman_y)
-    return False, False
+
+    ate_all_pills = total_pills(map) == 0
+    return ate_all_pills, ate_all_pills
 
