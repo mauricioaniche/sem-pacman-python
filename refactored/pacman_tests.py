@@ -1,4 +1,3 @@
-import pytest
 from refactored.pacman import within_borders, is_wall, total_pills, find_pacman, next_position, move_pacman, is_pacman, \
     is_pill, is_ghost, play, get_all_ghosts
 
@@ -175,6 +174,7 @@ def test_play_outside_borders():
     play(map, 'a')
 
     assert find_pacman(map) == (x, y)
+
 
 def test_play_wall():
     map = ["|@..P"]
