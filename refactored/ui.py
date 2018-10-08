@@ -15,7 +15,7 @@ ui_ghost = [
     "'^^^' "
 ]
 
-ui_hero = [
+ui_pacman = [
     " .--. ",
     "/ _.-'",
     "\\  '-.",
@@ -50,7 +50,7 @@ def ui_print(map):
                     print(ui_wall[piece], end='')
                 # if it's a pacman
                 elif point == '@':
-                    print(ui_hero[piece], end='')
+                    print(ui_pacman[piece], end='')
                 # if it's empty
                 elif point == '.':
                     print(ui_empty[piece], end='')
