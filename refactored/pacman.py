@@ -12,7 +12,7 @@ def find_pacman(map):
 
 
 def within_borders(map, x, y):
-    y_is_valid = 0 <= y <= len(map[0])
+    y_is_valid = 0 <= y < len(map[0])
     x_is_valid = 0 <= x < len(map)
 
     return y_is_valid and x_is_valid

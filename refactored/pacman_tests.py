@@ -29,11 +29,12 @@ def test_within_borders():
 
     # boundaries
     assert within_borders(map, 0, 0) is True
-    assert within_borders(map, 5, 10) is True
+    assert within_borders(map, 5, 9) is True
 
     # y boundaries
     assert within_borders(map, 1, -1) is False
-    assert within_borders(map, 1, 10) is True
+    assert within_borders(map, 1, 9) is True
+    assert within_borders(map, 1, 10) is False
     assert within_borders(map, 1, 11) is False
 
     # x boundaries
