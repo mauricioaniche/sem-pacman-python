@@ -1,6 +1,5 @@
 import random
 
-from getkey import getkey, keys
 
 # Initialize the map
 # . -> empty space (ghosts and pacman can walk)
