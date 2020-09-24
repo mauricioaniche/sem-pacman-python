@@ -12,6 +12,6 @@ map = [
 ]
 
 map = create_map(map)
-ui = SimpleUI() # or SimpleUI
+ui = SimpleUI() # or AsciiArtUI
 game = Game(map, ui)
 game.play()
