@@ -1,6 +1,6 @@
 from oop.game import Game
 from oop.map import create_map
-from oop.ui import SimpleUI
+from oop.ui import AsciiArtUI
 
 map = [
     "|--------|",
@@ -12,6 +12,6 @@ map = [
 ]
 
 map = create_map(map)
-ui = SimpleUI() # or SimpleUI
+ui = AsciiArtUI(True) # or SimpleUI
 game = Game(map, ui)
 game.play()
