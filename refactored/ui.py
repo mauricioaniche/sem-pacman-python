@@ -1,5 +1,7 @@
+from termcolor import colored
 
-# We wanna print our game using beautiful ASCII-art images.
+
+# We want to print our game using beautiful ASCII-art images.
 # There they go.
 ui_wall = [
     "......",
@@ -36,6 +38,11 @@ ui_pill = [
     "      "
 ]
 
+# Define UI colors
+wall_color = "blue"
+ghost_color = "red"
+pacman_color = "yellow"
+pill_color = "grey"
 
 def ui_print(map):
     for row in map:
@@ -44,19 +51,19 @@ def ui_print(map):
 
                 # if it's a ghost
                 if point == 'G':
-                    print(ui_ghost[piece], end='')
+                    print(colored(ui_ghost[piece], ghost_color), end='')
                 # if it's a wall
                 elif point == '|' or point == '-':
-                    print(ui_wall[piece], end='')
+                    print(colored(ui_wall[piece], wall_color), end='')
                 # if it's a pacman
                 elif point == '@':
-                    print(ui_pacman[piece], end='')
+                    print(colored(ui_pacman[piece], pacman_color), end='')
                 # if it's empty
                 elif point == '.':
                     print(ui_empty[piece], end='')
                 # if it's a pill
                 elif point == 'P':
-                    print(ui_pill[piece], end='')
+                    print(colored(ui_pill[piece], pill_color), end='')
 
             print("", end='\n')
 

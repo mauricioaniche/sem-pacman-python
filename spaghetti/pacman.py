@@ -1,5 +1,5 @@
 import random
-
+from termcolor import colored
 
 # Initialize the map
 # . -> empty space (ghosts and pacman can walk)
@@ -16,8 +16,8 @@ map = [
     "|--------|"
 ]
 
-# We wanna print our game using beautiful ASCII-art images.
-# There they go.
+# We wan to print our game using beautiful ASCII-art images.
+
 ui_wall = [
 	"......",
 	"......",
@@ -53,12 +53,17 @@ ui_pill = [
 	"      "
 ]
 
+# Define UI colors
+wall_color = "blue"
+ghost_color = "red"
+pacman_color = "yellow"
+pill_color = "grey"
+
 
 # our game runs until pacman eats everything or ghosts get the pacman
 game_finished = False
 win = False
 while not game_finished:
-
 
     # --- print the map
     for row in map:
@@ -67,19 +72,19 @@ while not game_finished:
 
                 # if it's a ghost
                 if point == 'G':
-                    print(ui_ghost[piece], end = '')
+                    print(colored(ui_ghost[piece], ghost_color), end='')
                 # if it's a wall
                 elif point == '|' or point == '-':
-                    print(ui_wall[piece], end = '')
+                    print(colored(ui_wall[piece], wall_color), end='')
                 # if it's a pacman
                 elif point == '@':
-                    print(ui_hero[piece], end = '')
+                    print(colored(ui_hero[piece], pacman_color), end='')
                 # if it's empty
                 elif point == '.':
-                    print(ui_empty[piece], end = '')
+                    print(ui_empty[piece], end='')
                 # if it's a pill
                 elif point == 'P':
-                    print(ui_pill[piece], end = '')
+                    print(colored(ui_pill[piece], pill_color), end='')
 
             print("", end='\n')
 
@@ -88,14 +93,14 @@ while not game_finished:
     for x in range(len(map)):
         for y in range(len(map[x])):
             if map[x][y] == 'G':
-                all_ghosts.append([x,y])
+                all_ghosts.append([x, y])
 
     for ghost in all_ghosts:
         old_ghost_x = ghost[0]
         old_ghost_y = ghost[1]
 
         possible_directions = [
-            [old_ghost_x, old_ghost_y + 1], # x, y+1
+            [old_ghost_x, old_ghost_y + 1],  # x, y+1
             [old_ghost_x + 1, old_ghost_y],  # x+1, y
             [old_ghost_x, old_ghost_y - 1],  # x, y-1
             [old_ghost_x - 1, old_ghost_y]  # x-1, y
@@ -196,25 +201,29 @@ while not game_finished:
 
 
 # --- print the map for the last time
+
+# Define the color to be displayed if victory or not
+final_board_color = "green" if win else "red"
+
 for row in map:
     for piece in range(4):
         for point in row:
 
             # if it's a ghost
             if point == 'G':
-                print(ui_ghost[piece], end = '')
+                print(colored(ui_ghost[piece], final_board_color), end='')
             # if it's a wall
             elif point == '|' or point == '-':
-                print(ui_wall[piece], end = '')
+                print(colored(ui_wall[piece], final_board_color), end='')
             # if it's a pacman
             elif point == '@':
-                print(ui_hero[piece], end = '')
+                print(colored(ui_hero[piece], final_board_color), end='')
             # if it's empty
             elif point == '.':
-                print(ui_empty[piece], end = '')
+                print(colored(ui_empty[piece], final_board_color), end='')
             # if it's a pill
             elif point == 'P':
-                print(ui_pill[piece], end = '')
+                print(colored(ui_pill[piece], final_board_color), end='')
 
         print("", end='\n')
 

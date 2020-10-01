@@ -11,9 +11,9 @@ def run(map, ui_print, ui_key, ui_final_message, generate_int):
         ui_print(map)
 
         key = ui_key()
-        game_finished, win = play(map, key)
+        game_finished, win, invalid_key = play(map, key)
 
-        if not game_finished:
+        if not game_finished and not invalid_key:
             game_finished, win = move_ghosts(map, generate_int)
 
     # print the map for the last time

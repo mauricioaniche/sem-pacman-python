@@ -118,23 +118,23 @@ def play(map, key):
     next_pacman_x, next_pacman_y = next_position(key, pacman_x, pacman_y)
     invalid_key = next_pacman_x == -1 and next_pacman_x == -1
     if invalid_key:
-        return False, False
+        return False, False, True
 
     # check if x and y are within the borders of the map
     if not within_borders(map, next_pacman_x, next_pacman_y):
-        return False, False
+        return False, False, False
 
     # check if it's not a wall or a ghost
     # if it's an invalid position, just start all over!
     if is_wall(map, next_pacman_x, next_pacman_y):
-        return False, False
+        return False, False, False
 
     # if pacman commits suicide, we loose
     if is_ghost(map, next_pacman_x, next_pacman_y):
-        return True, False
+        return True, False, False
 
     # move to that position
     move_pacman(map, pacman_x, pacman_y, next_pacman_x, next_pacman_y)
 
     ate_all_pills = total_pills(map) == 0
-    return ate_all_pills, ate_all_pills
+    return ate_all_pills, ate_all_pills, False
